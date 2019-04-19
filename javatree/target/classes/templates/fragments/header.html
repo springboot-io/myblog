@@ -1,0 +1,107 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:fragment="header-css">
+
+        <title>Javatree.tech</title>
+        <link rel="shortcut icon" type="image/png" th:href="@{../../css/favicon.ico}"/>
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen"/>
+
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+                th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+                <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=lhgro83efojt3kdjs210pvjidngk753fosjy66q0drih1qjp"></script>
+                
+                <script>tinymce.init({ selector:'textarea',
+                 toolbar: "forecolor backcolor",
+  color_map: [
+    "000000", "Black",
+    "993300", "Burnt orange",
+    "333300", "Dark olive",
+    "003300", "Dark green",
+    "003366", "Dark azure",
+    "000080", "Navy Blue",
+    "333399", "Indigo",
+    "333333", "Very dark gray",
+    "800000", "Maroon",
+    "FF6600", "Orange",
+    "808000", "Olive",
+    "008000", "Green",
+    "008080", "Teal",
+    "0000FF", "Blue",
+    "666699", "Grayish blue",
+    "808080", "Gray",
+    "FF0000", "Red",
+    "FF9900", "Amber",
+    "99CC00", "Yellow green",
+    "339966", "Sea green",
+    "33CCCC", "Turquoise",
+    "3366FF", "Royal blue",
+    "800080", "Purple",
+    "999999", "Medium gray",
+    "FF00FF", "Magenta",
+    "FFCC00", "Gold",
+    "FFFF00", "Yellow",
+    "00FF00", "Lime",
+    "00FFFF", "Aqua",
+    "00CCFF", "Sky blue",
+    "993366", "Red violet",
+    "FFFFFF", "White",
+    "FF99CC", "Pink",
+    "FFCC99", "Peach",
+    "FFFF99", "Light yellow",
+    "CCFFCC", "Pale green",
+    "CCFFFF", "Pale cyan",
+    "99CCFF", "Light sky blue",
+    "CC99FF", "Plum"
+  ] });</script>
+
+        <link rel="stylesheet" th:href="@{/css/main.css}"
+              href="../../css/main.css"/>
+              
+    </div>
+</head>
+<body>
+<div th:fragment="header">
+    <!-- this is header -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/home}" style="
+    font-family: monospace;
+"><img th:src="@{/css/javatree.png}" style="
+    height: 132px;
+    margin-top: -25px;
+    margin-left: -133px;
+" /></a>
+                
+            </div>
+            <div id="navbar" class="collapse navbar-collapse navbar-right">
+                <!-- show registration only if user is not yet authenticated -->
+                <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
+                  <!--  <li class="active"><a th:href="@{/registration}">Registration</a></li> -->
+                </ul>
+                <!-- show login only if user is not yet authenticated -->
+                <!-- <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
+                    <li class="active"><a th:href="@{/login}">Login</a></li>
+                </ul> -->
+                <!-- show My Blog only if user is authenticated -->
+                <ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
+                    <li class="active"><a th:href="@{'/blog/' + ${#authentication.getName()}}"><span sec:authentication="name"></span></a></li>
+                </ul>
+                <!-- show new post only if user is authenticated -->
+                <ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
+                    <li class="active"><a th:href="@{/newPost}">New Post</a></li>
+                </ul>
+                <!-- show sign out only if user is authenticated -->
+                <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+                    <li class="active"><a th:href="@{/logout}">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>

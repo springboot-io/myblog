@@ -1,0 +1,98 @@
+h1 {
+    color: #007cfb;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 41px;
+    color: yellowgreen;
+}
+
+footer {
+    margin-top: 60px;
+}
+
+.validation-message {
+    font-style: normal;
+    font-size: 10px;
+    color: #FF1C19;
+}
+
+a {
+    transition: all .2s;
+    color: #007cfb;
+}
+
+a:hover, a:focus, a:active {
+    color: #006bd7;
+    text-decoration: none;
+}
+
+.pagination {
+    display: block;
+    text-align: center;
+}
+.navbar-inverse {
+    background-color: #6db33f;
+    border-color: #6db33f;
+}
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 40px;
+    line-height: 20px;
+}
+
+.h3, h3 {
+    font-size: 16px;
+}
+
+.h1, h1 {
+    font-size: 20px;
+}
+
+
+.jumbotron .h1, .jumbotron h1 {
+    font-size: 32px;
+    color: #007cfb;
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #eafbde;
+    border: 1px solid #4bff006e;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-body {
+    padding: 8px;
+    margin-bottom: -32px;
+    margin-top: 0px;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #6db33f;
+}
+.jumbotron {
+    padding-top: 4px !important;
+    padding-bottom: 11px !important;
+    margin-bottom: -27px;
+    color: inherit;
+    background-color: #eafbde;
+}
+pre.prettyprint {
+    padding: 2px;
+    border: 1px solid #eafbde;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: monospace;
+    font-weight: 500;
+    line-height: 1.5;
+    color: mediumblue;
+}

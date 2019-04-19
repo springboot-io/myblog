@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:replace="/fragments/header :: header-css"/>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</head>
+<body>
+
+<div th:replace="/fragments/header :: header"/>
+
+<div class="container">
+
+    <!--Post-->
+    <div class="jumbotron">
+
+        <h1 style="
+    font-size: 22px;
+" th:text="${post.title}">Title</h1>
+<div style=" font-size: 10px; margin-top: -9px; margin-bottom: -7px;" th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} "></div>
+           <span style="font-size: 10px;">Created by:</span>  <a th:text="${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a>
+        <h3  th:utext="${post.body}">Body</h3>
+
+        <!--Only show these buttons if the user is the owner of post-->
+        <div sec:authorize="isAuthenticated()" th:if="${username}">
+            <div class="row">
+                <a th:href="@{'/editPost/{id}'(id=${post.id})}" class="col-md-2">
+                    <button type="button" class="btn btn-primary btn-block" th:text="Edit">Edit</button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <h2>Code or Comment:</h2>
+
+    <!--Comments-->
+    <div class="well" th:each="comment : ${post.comments}">
+        
+        <pre class="prettyprint"><code class="language-java"><h3 th:utext="${comment.body}">Body</h3></code></pre>
+        <div style=" font-size: 10px; margin-top: -9px; margin-bottom: -7px;" th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} "></div>
+           <span style="font-size: 10px;">Created by:</span>  <a th:text="${post.user.username}" th:href="@{'/blog/' + ${post.user.username}}">User</a>
+       
+    </div>
+
+    <!--Leave a comment button-->
+    <!--Only if authenticated-->
+    <div sec:authorize="isAuthenticated()">
+        <div class="row">
+            <a th:href="@{'/commentPost/{id}'(id=${post.id})}" class="col-md-2">
+                <button type="button" class="btn btn-primary btn-block" th:text="Comment">Comment</button>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+
+<div th:replace="/fragments/footer :: footer"/>
+
+</body>
+</html>
